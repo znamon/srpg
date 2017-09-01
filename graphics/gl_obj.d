@@ -1,6 +1,6 @@
 module graphics.gl_obj;
 
-import derelict.opengl3.gl3;
+import derelict.opengl;
 import graphics.shaders;
 
 class GL_Obj {
@@ -16,7 +16,7 @@ class GL_Obj {
     };
     glGenBuffers(1, u_vbo);
     glBindBuffer(u_vbo);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(fvCoords), fvCoords, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, fvCoords.sizeof, fvCoords, GL_STATIC_DRAW);
 
     u_prog = glCreateProgram();
     Shaders cShaders = Shaders.get();
@@ -31,6 +31,7 @@ class GL_Obj {
     
     glDetachShader(u_prog, uVertex);
     glDetachShader(u_prog, uFragment);
+	/* Check if successful */
   };
   
   public ~this() {

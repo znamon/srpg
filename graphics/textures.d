@@ -1,6 +1,7 @@
 module graphics.textures;
 
 import derelict.freeimage;
+import derelict.opengl;
 
 class Textures {
   public enum Texture {

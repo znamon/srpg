@@ -1,6 +1,6 @@
 module graphics.shaders;
 
-import derelict.opengl3;
+import derelict.opengl;
 
 class Shaders {
   public enum Vertex {
@@ -25,6 +25,7 @@ class Shaders {
   };
   
   public uint vertex(uint uIndex) const { return uv_vertexShaders[uIndex]; };
+  
   public uint fragment(uint uIndex) const { return uv_fragmentShaders[uIndex]; };
   
   private static Shaders c_Instance;

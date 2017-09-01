@@ -1,6 +1,7 @@
 module graphics.window;
 
 import derelict.glfw3;
+import derelict.opengl;
 
 class Window {
   public static ref Window get() {
@@ -26,12 +27,15 @@ class Window {
   private static __gshared Window c_Instance;
   
   private this() {
+	DerelictGL3.load();
+	DerelictGLFW3.load();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    sp_Window = glfwCreateWindow(x = 640, y = 400, "", null, null);
+    sp_Window = glfwCreateWindow(u_x = 640, u_y = 400, "", null, null);
     if(sp_Window == null)
       throw Throwable("Failed to init window");
     glfwMakeContextCurrent(sp_Window);
+	DerelictGL3.reload();
     glfwSwapInterval(1);
   };
   

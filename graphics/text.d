@@ -1,6 +1,7 @@
 module graphics.text;
 
 import derelict.freetype;
+import derelict.opengl;
 
 class Text {
   public static ref Text get() {
